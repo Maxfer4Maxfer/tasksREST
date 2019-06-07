@@ -1,0 +1,38 @@
+version: '3'
+
+services:
+
+  mysql:
+    image: mysql:8
+    container_name: mysql
+    command: --sql_mode="" --default-authentication-plugin=mysql_native_password
+             --sql_mode="" --default-authentication-plugin=mysql_native_password
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: tasks
+    ports:
+      - '3306:3306'
+    volumes:
+      - mysql_data:/var/lib/mysql
+    networks:
+      - back_net
+
+  tasks:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: tasks
+    container_name: tasks
+    ports:
+      - '80:80'
+    depends_on:
+      - mysql
+    networks:
+      - back_net
+
+
+networks:
+  back_net:
+
+volumes:
+  mysql_data:
