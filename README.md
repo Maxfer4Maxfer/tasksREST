@@ -1,5 +1,5 @@
 # tasksREST Service
-**TtaskREST Service** is a simple REST API service written on Go.
+**TaskREST Service** is a simple REST API service written on Go.
 It can be used as a template or as a project for study purpose.
 
 ## Docker-compose Deploy
